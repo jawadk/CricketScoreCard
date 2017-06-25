@@ -1,0 +1,6 @@
+D:\VS_Workspace\CricketScroreCard\CricketScroreCard\bin\Debug\CricketScroreCard.exe.config
+D:\VS_Workspace\CricketScroreCard\CricketScroreCard\obj\Debug\CricketScroreCard.csprojResolveAssemblyReference.cache
+D:\VS_Workspace\CricketScroreCard\CricketScroreCard\bin\Debug\CricketScroreCard.exe
+D:\VS_Workspace\CricketScroreCard\CricketScroreCard\bin\Debug\CricketScroreCard.pdb
+D:\VS_Workspace\CricketScroreCard\CricketScroreCard\obj\Debug\CricketScroreCard.exe
+D:\VS_Workspace\CricketScroreCard\CricketScroreCard\obj\Debug\CricketScroreCard.pdb
