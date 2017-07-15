@@ -50,6 +50,12 @@ namespace CricketScroreCard
             Console.Write("Please enter code for Team2: ");
             string Team2Code = Console.ReadLine();
 
+            //MARUF - JASIR
+            /*At this point we need to validate the input team codes. I mean wheather the entered
+             team code exists in our system or not. If not then we need to ask user to input the valid code else
+             move forward*/
+
+
 
 
             //string[] AUSTRALIA = { "Steven Smith(c)", "David Warner", "Pat Cummins", "Aaron Finch", "John Hastings", "Josh Hazlewood", "Travis Head", "Moises Henriques", "Chris Lynn", "Glenn Maxwell", "James Pattinson", "Mitchell Starc", "Marcus Stoinis", "Matthew Wade", "Adam Zampa" };
