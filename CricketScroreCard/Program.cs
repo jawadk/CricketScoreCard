@@ -130,7 +130,7 @@ namespace CricketScroreCard
             d.ShowTeamPlayers(Team1_Code, AllTeamsPlayer, Team1_Name);
             d.ShowTeamPlayers(Team2_Code, AllTeamsPlayer, Team2_Name);
 
-            Toss.TossCall(Team1_Name, Team2_Name, AllTeamsPlayer[Team1_Code,0]);
+            Toss.TossCall(Team1_Name, Team2_Name, AllTeamsPlayer[Team1_Code, 0], AllTeamsPlayer[Team2_Code, 0]);
 
 
 
