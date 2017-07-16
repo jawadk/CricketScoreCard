@@ -119,16 +119,18 @@ namespace CricketScroreCard
             Console.WriteLine("\n");
 
             //Store the team1 and team2 name in 2 string variables for easy use
-            string T1_Name = tdarr[tsarr[0]];
-            string T2_Name = tdarr[tsarr[1]];
+            string Team1_Name = tdarr[tsarr[0]];
+            string Team2_Name = tdarr[tsarr[1]];
 
             //Store the team1 and team2 Code in 2 integar variables for easy use
             int Team1_Code = tsarr[0];
             int Team2_Code = tsarr[1];
 
             Display d = new Display();
-            d.ShowTeamPlayers(Team1_Code, AllTeamsPlayer, T1_Name);
-            d.ShowTeamPlayers(Team2_Code, AllTeamsPlayer, T2_Name);
+            d.ShowTeamPlayers(Team1_Code, AllTeamsPlayer, Team1_Name);
+            d.ShowTeamPlayers(Team2_Code, AllTeamsPlayer, Team2_Name);
+
+            Toss.TossCall(Team1_Name, Team2_Name, AllTeamsPlayer[Team1_Code,0]);
 
 
 
