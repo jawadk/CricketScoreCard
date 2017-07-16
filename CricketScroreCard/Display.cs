@@ -10,6 +10,7 @@ namespace CricketScroreCard
     {
         public void ShowTeamPlayers(int tsarr, string[,] AllTeams, string T1_Name)
         {
+            Console.WriteLine("\n");
             Console.WriteLine(T1_Name + " match players: ");
             for (int i = 0; i < 10; i++)
             {

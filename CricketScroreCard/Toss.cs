@@ -10,15 +10,19 @@ namespace CricketScroreCard
     {
         int TossResult = 0;        
 
-        public static void TossDesider(int CoinSide, string Team1, string Team2, string Team1_Captain, string Team2_Captain)
+        public static int TossDesider(int CoinSide, string Team1, string Team2, string Team1_Captain, string Team2_Captain)
         {
             int Heads = 1;
             int Tails = 0;
+            int Toss_Win_Team;
+            int Team1_Batting = 0;
+            int Team2_Batting = 0;
+            int Team1_Bowling = 0;
+            int Team2_Bowling = 0;
 
             Random rnd = new Random();
 
             int TossResult = rnd.Next(Tails, Heads);
-            int test = rnd.Next(0, 1);
                         
             if (CoinSide == TossResult)
             {
@@ -32,10 +36,14 @@ namespace CricketScroreCard
                 if (Selection == 0)
                 {
                     Console.WriteLine("Great....!!!! " + Team1_Captain + "you have choosed BATTING...");
+                    Toss_Win_Team = 1;
+                    Team1_Batting = 1; 
                 }
                 else
                 {
-                    Console.WriteLine("Interesting decision....!!!! " + Team1_Captain + "you have choosed BOWLING...");    
+                    Console.WriteLine("Interesting decision....!!!! " + Team1_Captain + "you have choosed BOWLING...");
+                    Toss_Win_Team = 1;
+                    Team1_Bowling = 1;
                 }
             }
             else
@@ -50,15 +58,40 @@ namespace CricketScroreCard
                 if (Selection == 0)
                 {
                     Console.WriteLine("Great....!!!! " + Team2_Captain + "you have choosed BATTING...");
+                    Toss_Win_Team = 2;
+                    Team2_Batting = 1;
                 }
                 else
                 {
                     Console.WriteLine("Interesting decision....!!!! " + Team2_Captain + "you have choosed BOWLING...");
+                    Toss_Win_Team = 2;
+                    Team2_Bowling = 1;
                 }
+
+
             }
+
+            if (Toss_Win_Team == 1 && Team1_Batting == 1)
+            {
+                Toss_Win_Team = 5;
+                
+            }
+            else if (Toss_Win_Team == 1 && Team1_Bowling == 1)
+            {
+                Toss_Win_Team = 10;
+            }
+            else if (Toss_Win_Team == 2 && Team2_Batting == 1)
+            {
+                Toss_Win_Team = 15;
+            }
+            else if (Toss_Win_Team == 2 && Team2_Bowling== 1)
+            {
+                Toss_Win_Team = 20;
+            }
+            return Toss_Win_Team;
         }
 
-        public static void TossCall(string Team1_Name, string Team2_Name, string Team1_Captain, string Team2_Captain)
+        public static int TossCall(string Team1_Name, string Team2_Name, string Team1_Captain, string Team2_Captain)
         {
             int TossValue = 0;
             Console.WriteLine("Great, lets move for the TOSS \n");
@@ -76,7 +109,8 @@ namespace CricketScroreCard
    
             } while (TossValue > 2);
 
-            Toss.TossDesider(TossValue, Team1_Name, Team2_Name, Team1_Captain, Team2_Captain);
+            int Toss_Win_Result = Toss.TossDesider(TossValue, Team1_Name, Team2_Name, Team1_Captain, Team2_Captain);
+            return Toss_Win_Result;
         }
                 
     }
