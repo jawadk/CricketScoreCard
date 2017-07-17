@@ -10,12 +10,28 @@ namespace CricketScroreCard
     {
         static void Main(string[] args)
         {
+            int[,] Team_First_BattingLine = new int[2, 11];
+            int[,] Team_Second_BattingLine = new int[2, 11];
+            int[,] Team1_BowlingLine = new int[2, 11];
+            int[,] Team2_BowlingLine = new int[2, 11];
 
-            int MatchOvers = 5; //T20 match total balls (6 * 20 = 120)
+            int[] Boundary_Batting1 = new int[2];
+            Boundary_Batting1[0] = 0;
+            Boundary_Batting1[1] = 0;
+            int[] Boundary_Batting2 = new int[2];
+
+            int Batsman1 = 0;
+            int Batsman2 = 0;
+            int Stricker = 1;
+            int NonSticker = 0;
+
+            int MatchOvers = 1; //T20 match total balls (6 * 20 = 120)
             int TotalBalls = MatchOvers * 6; //Total balls avaiable
-            int Team1_Score = 0, Team2_Score = 0;
+            int BallBowl = 0;
+            int Score1 = 0, Score2 = 0;
 
-            int Current_Bowler, Current_Bat1, Current_bat2 = 0;
+            int Current_Bowler = 0;
+            int Current_Bat1 =0, Current_Bat2 = 0;
 
                         
             //Presentation Spash ----- START
@@ -132,78 +148,162 @@ namespace CricketScroreCard
             d.ShowTeamPlayers(Team1_Code, AllTeamsPlayer, Team1_Name);
             d.ShowTeamPlayers(Team2_Code, AllTeamsPlayer, Team2_Name);
 
-            int CheckingWin = Toss.TossCall(Team1_Name, Team2_Name, AllTeamsPlayer[Team1_Code, 0], AllTeamsPlayer[Team2_Code, 0]);
+            int Checking_Toss_Win = Toss.TossCall(Team1_Name, Team2_Name, AllTeamsPlayer[Team1_Code, 0], AllTeamsPlayer[Team2_Code, 0]);
 
             d.ShowTeamPlayers(Team1_Code, AllTeamsPlayer, Team1_Name);
             d.ShowTeamPlayers(Team2_Code, AllTeamsPlayer, Team2_Name);
 
-            if (CheckingWin == 5)
+            int[] SelectedBatBowl = MatchAction.BowlerSelectionInningStart(Checking_Toss_Win, Current_Bowler, Team1_Name, Team2_Name, Team1_Code, Team2_Code, AllTeamsPlayer);
+
+            int TeamBatting_Code = SelectedBatBowl[0];
+            int Team_Battman_1_Code = SelectedBatBowl[1];
+            int Team_Battman_2_Code = SelectedBatBowl[2];
+            int TeamBowling_Code = SelectedBatBowl[3];
+            int Team_Bowler_Code = SelectedBatBowl[4];
+
+            for (int i = 1; i <= TotalBalls; i++)
             {
-                Console.WriteLine("These Batmans will start the innings for " + Team1_Name);
-                for (int i = 0; i < 2; i++)
-                {                    
-                    Console.WriteLine("Player Code [" + i + "] " + AllTeamsPlayer[Team1_Code, i]);
-                }
+                Display.ShowCodes(); // This method shows the Codes for activity
+                int Action_Input = Convert.ToInt32(Console.ReadLine());
 
-                Console.WriteLine("\n");
-                Console.WriteLine("Please select the opening bowler for " + Team2_Name + " from the following: ");
-
-                for (int i = 5; i < 10; i++)
+                if (Action_Input == 0)
                 {
-                    Console.WriteLine("Player Code [" + i + "] " + AllTeamsPlayer[Team2_Code, i]);
-                }
-
-                Current_Bowler = Convert.ToInt32(Console.ReadLine());
-            }
-
-            else if (CheckingWin == 10)
-            {
-                Console.WriteLine("Please select the opening bowler for " + Team1_Name + " from the following: ");
-                for (int i = 5; i < 10; i++)
-                {
-                    Console.WriteLine("Player Code [" + i + "] " + AllTeamsPlayer[Team1_Code, i]);
-                }
-                Current_Bowler = Convert.ToInt32(Console.ReadLine());
-
-                Console.WriteLine("\n");
-                Console.WriteLine("These Batmans will start the innings for " + Team2_Name);
-                for (int i = 0; i < 2; i++)
-                {
+                    Score1 = Score1 + 0;            //Adding 0 in Total Score
+                    TotalBalls = TotalBalls - 1;    //Decrease 1 ball from total balls
+                    BallBowl = BallBowl + 1;
+                    if (Stricker == 1)
+                    {
+                        Batsman1 = Batsman1 + 0;
+                    }
+                    else if (Stricker == 0)
+                    {
+                        Batsman2 = Batsman2 + 0;
+                    }
+                    Display.ShowScore(TeamBatting_Code, BallBowl, Score1);
                     
-                    Console.WriteLine("Player Code [" + i + "] " + AllTeamsPlayer[Team2_Code, i]);
                 }
-            }
-            else if (CheckingWin == 15)
-            {
-                Console.WriteLine("These Batmans will start the innings for " + Team2_Name);
-                for (int i = 0; i < 2; i++)
-                {                    
-                    Console.WriteLine("Player Code [" + i + "] " + AllTeamsPlayer[Team2_Code, i]);
-                }
-
-                Console.WriteLine("\n");
-                Console.WriteLine("Please select the opening bowler for " + Team1_Name + " from the following: ");
-                for (int i = 5; i < 10; i++)
+                else if (Action_Input == 1)
                 {
-                    Console.WriteLine("Player Code [" + i + "] " + AllTeamsPlayer[Team1_Code, i]);
-                }
-                Current_Bowler = Convert.ToInt32(Console.ReadLine());                
-            }
-            else if (CheckingWin == 20)
-            {
-                Console.WriteLine("Please select the opening bowler for " + Team2_Name + " from the following: ");
-                for (int i = 5; i < 10; i++)
-                {
-                    Console.WriteLine("Player Code [" + i + "] " + AllTeamsPlayer[Team2_Code, i]);
-                }
-                Current_Bowler = Convert.ToInt32(Console.ReadLine());
+                    Score1 = Score1 + 1;            //Adding 0 in Total Score
+                    TotalBalls = TotalBalls - 1;    //Decrease 1 ball from total balls
+                    BallBowl = BallBowl + 1;
 
-                Console.WriteLine("\n");
-                Console.WriteLine("These Batmans will start the innings for " + Team1_Name);
-                for (int i = 0; i < 2; i++)
-                {                    
-                    Console.WriteLine("Player Code [" + i + "] " + AllTeamsPlayer[Team1_Code, i]);
-                }                
+                    if (Stricker == 1)
+                    {
+                        Batsman1 = Batsman1 + 1;
+                        Stricker = 0;
+                    }
+                    else if (Stricker == 0)
+                    {
+                        Batsman2 = Batsman2 + 1;
+                        Stricker = 1;
+                    }
+                    Display.ShowScore(TeamBatting_Code, BallBowl, Score1);
+                }
+                else if (Action_Input == 2)
+                {
+                    Score1 = Score1 + 2;            //Adding 0 in Total Score
+                    TotalBalls = TotalBalls - 1;    //Decrease 1 ball from total balls
+                    BallBowl = BallBowl + 1;
+
+                    if (Stricker == 1)
+                    {
+                        Batsman1 = Batsman1 + 2;
+                        Stricker = 0;
+                    }
+                    else if (Stricker == 0)
+                    {
+                        Batsman2 = Batsman2 + 2;
+                        Stricker = 1;
+                    }
+                    Display.ShowScore(TeamBatting_Code, BallBowl, Score1);
+                }
+                else if (Action_Input == 3)
+                {
+                    //Adding 0 in Total Score
+                    Score1 = Score1 + 3;
+
+                    //Decrease 1 ball from total balls
+                    TotalBalls = TotalBalls - 1;    
+                    BallBowl = BallBowl + 1;
+
+                    if (Stricker == 1)
+                    {
+                        Batsman1 = Batsman1 + 3;
+                        Stricker = 0;
+                    }
+                    else if (Stricker == 0)
+                    {
+                        Batsman2 = Batsman2 + 3;
+                        Stricker = 1;
+                    }
+                    Display.ShowScore(TeamBatting_Code, BallBowl, Score1);
+                }
+                else if (Action_Input == 4)
+                {
+                    //Adding 0 in Total Score
+                    Score1 = Score1 + 4;
+
+                    //Counting Boundary - 4
+                    Boundary_Batting1[0] = Boundary_Batting1[0] + 1;
+
+                    //Decrease 1 ball from total balls
+                    TotalBalls = TotalBalls - 1;    
+                    BallBowl = BallBowl + 1;
+
+                    if (Stricker == 1)
+                    {
+                        Batsman1 = Batsman1 + 4;                        
+                    }
+                    else if (Stricker == 0)
+                    {
+                        Batsman2 = Batsman2 + 4;                        
+                    }
+                    Display.ShowScore(TeamBatting_Code, BallBowl, Score1);
+                }
+                else if (Action_Input == 5)
+                {
+                    //Adding 0 in Total Score
+                    Score1 = Score1 + 5;
+
+                    //Decrease 1 ball from total balls
+                    TotalBalls = TotalBalls - 1;    
+                    BallBowl = BallBowl + 1;
+
+                    if (Stricker == 1)
+                    {
+                        Batsman1 = Batsman1 + 5;
+                        Stricker = 0;
+                    }
+                    else if (Stricker == 0)
+                    {
+                        Batsman2 = Batsman2 + 5;
+                        Stricker = 1;
+                    }
+                    Display.ShowScore(TeamBatting_Code, BallBowl, Score1);
+                }
+                else if (Action_Input == 6)
+                {
+                    //Adding 0 in Total Score
+                    Score1 = Score1 + 6;
+
+                    //Counting Boundary - 6 Runs
+                    Boundary_Batting1[1] = Boundary_Batting1[1] + 1;    
+
+                    //Decrease 1 ball from total balls
+                    TotalBalls = TotalBalls - 1;
+                    BallBowl = BallBowl + 1;
+
+                    if (Stricker == 1)
+                    {
+                        Batsman1 = Batsman1 + 6;
+                    }
+                    else if (Stricker == 0)
+                    {
+                        Batsman2 = Batsman2 + 6;
+                    }
+                    Display.ShowScore(TeamBatting_Code, BallBowl, Score1);
+                }
             }
         }
     }
