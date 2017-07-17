@@ -53,19 +53,35 @@ namespace CricketScroreCard
             {
                 if (TeamCode == 0)
                 {
-                    Console.WriteLine("PAKISTAN - " + Score);                
+                    Console.WriteLine("\n");
+                    Console.WriteLine("-------------------------------------");
+                    Console.WriteLine("PAKISTAN - " + Score);
+                    Console.WriteLine("-------------------------------------");
+                    Console.WriteLine("\n");
                 }
                 else if (TeamCode == 1)
                 {
-                    Console.WriteLine("SRILANKA - " + Score);                
+                    Console.WriteLine("\n");
+                    Console.WriteLine("-------------------------------------");
+                    Console.WriteLine("SRILANKA - " + Score);
+                    Console.WriteLine("-------------------------------------");
+                    Console.WriteLine("\n");
                 }
                 else if (TeamCode == 2)
                 {
-                    Console.WriteLine("AUSTRALIA - " + Score);                
+                    Console.WriteLine("\n");
+                    Console.WriteLine("-------------------------------------");
+                    Console.WriteLine("AUSTRALIA - " + Score);
+                    Console.WriteLine("-------------------------------------");
+                    Console.WriteLine("\n");
                 }
                 else if (TeamCode == 3)
                 {
-                    Console.WriteLine("INDIA - " + Score);                
+                    Console.WriteLine("\n");
+                    Console.WriteLine("-------------------------------------");
+                    Console.WriteLine("INDIA - " + Score);
+                    Console.WriteLine("-------------------------------------");
+                    Console.WriteLine("\n");
                 }
             }
         }

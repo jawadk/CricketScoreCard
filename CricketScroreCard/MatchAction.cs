@@ -101,5 +101,14 @@ namespace CricketScroreCard
             }
             return Teams_Bat_Bow;
         }
+
+        public static void RotateStrike(int BallBowl)
+        {
+            if (BallBowl % 6 == 0)
+            {
+
+ 
+            }
+        }
     }
 }
