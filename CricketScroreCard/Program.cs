@@ -209,12 +209,10 @@ namespace CricketScroreCard
                     if (Stricker == 1)
                     {
                         Batsman1 = Batsman1 + 2;
-                        Stricker = 0;
                     }
                     else if (Stricker == 0)
                     {
                         Batsman2 = Batsman2 + 2;
-                        Stricker = 1;
                     }
                     Display.ShowScore(TeamBatting_Code, BallBowl, Score1);
                 }
