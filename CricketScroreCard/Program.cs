@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -27,6 +27,7 @@ namespace CricketScroreCard
 
             int MatchOvers = 1; //T20 match total balls (6 * 20 = 120)
             int TotalBalls = MatchOvers * 6; //Total balls avaiable
+            int TotalBalls_Fixed = MatchOvers * 6; //Decrearing this variable to run the complete total balls for loop
             int BallBowl = 0;
             int Score1 = 0, Score2 = 0;
 
@@ -161,7 +162,7 @@ namespace CricketScroreCard
             int TeamBowling_Code = SelectedBatBowl[3];
             int Team_Bowler_Code = SelectedBatBowl[4];
 
-            for (int i = 1; i <= TotalBalls; i++)
+            for (int i = 1; i <= TotalBalls_Fixed; i++)
             {
                 Display.ShowCodes(); // This method shows the Codes for activity
                 int Action_Input = Convert.ToInt32(Console.ReadLine());
@@ -169,7 +170,7 @@ namespace CricketScroreCard
                 if (Action_Input == 0)
                 {
                     Score1 = Score1 + 0;            //Adding 0 in Total Score
-                    TotalBalls = TotalBalls - 1;    //Decrease 1 ball from total balls
+                    TotalBalls = --TotalBalls;    //Decrease 1 ball from total balls
                     BallBowl = BallBowl + 1;
                     if (Stricker == 1)
                     {
@@ -185,7 +186,7 @@ namespace CricketScroreCard
                 else if (Action_Input == 1)
                 {
                     Score1 = Score1 + 1;            //Adding 0 in Total Score
-                    TotalBalls = TotalBalls - 1;    //Decrease 1 ball from total balls
+                    TotalBalls = --TotalBalls;    //Decrease 1 ball from total balls
                     BallBowl = BallBowl + 1;
 
                     if (Stricker == 1)
@@ -203,7 +204,7 @@ namespace CricketScroreCard
                 else if (Action_Input == 2)
                 {
                     Score1 = Score1 + 2;            //Adding 0 in Total Score
-                    TotalBalls = TotalBalls - 1;    //Decrease 1 ball from total balls
+                    TotalBalls = --TotalBalls;    //Decrease 1 ball from total balls
                     BallBowl = BallBowl + 1;
 
                     if (Stricker == 1)
@@ -222,7 +223,7 @@ namespace CricketScroreCard
                     Score1 = Score1 + 3;
 
                     //Decrease 1 ball from total balls
-                    TotalBalls = TotalBalls - 1;    
+                    TotalBalls = --TotalBalls;    
                     BallBowl = BallBowl + 1;
 
                     if (Stricker == 1)
@@ -246,7 +247,7 @@ namespace CricketScroreCard
                     Boundary_Batting1[0] = Boundary_Batting1[0] + 1;
 
                     //Decrease 1 ball from total balls
-                    TotalBalls = TotalBalls - 1;    
+                    TotalBalls = --TotalBalls;    
                     BallBowl = BallBowl + 1;
 
                     if (Stricker == 1)
@@ -265,7 +266,7 @@ namespace CricketScroreCard
                     Score1 = Score1 + 5;
 
                     //Decrease 1 ball from total balls
-                    TotalBalls = TotalBalls - 1;    
+                    TotalBalls = --TotalBalls;       
                     BallBowl = BallBowl + 1;
 
                     if (Stricker == 1)
@@ -289,7 +290,7 @@ namespace CricketScroreCard
                     Boundary_Batting1[1] = Boundary_Batting1[1] + 1;    
 
                     //Decrease 1 ball from total balls
-                    TotalBalls = TotalBalls - 1;
+                    TotalBalls = --TotalBalls;
                     BallBowl = BallBowl + 1;
 
                     if (Stricker == 1)
