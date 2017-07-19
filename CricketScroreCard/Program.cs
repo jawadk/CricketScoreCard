@@ -10,7 +10,7 @@ namespace CricketScroreCard
     {
         static void Main(string[] args)
         {
-            int[,] Team_First_BattingLine = new int[2, 11];
+            int[] Team_First_BattingLine = new int[11];
             int[,] Team_Second_BattingLine = new int[2, 11];
             int[,] Team1_BowlingLine = new int[2, 11];
             int[,] Team2_BowlingLine = new int[2, 11];
@@ -23,7 +23,7 @@ namespace CricketScroreCard
             int Batsman1 = 0;
             int Batsman2 = 0;
             int Stricker = 1;
-            int NonSticker = 0;
+            int WhiteBowled = 0;
 
             int MatchOvers = 1; //T20 match total balls (6 * 20 = 120)
             int TotalBalls = MatchOvers * 6; //Total balls avaiable
@@ -156,11 +156,11 @@ namespace CricketScroreCard
 
             int[] SelectedBatBowl = MatchAction.BowlerSelectionInningStart(Checking_Toss_Win, Current_Bowler, Team1_Name, Team2_Name, Team1_Code, Team2_Code, AllTeamsPlayer);
 
-            int TeamBatting_Code = SelectedBatBowl[0];
-            int Team_Battman_1_Code = SelectedBatBowl[1];
-            int Team_Battman_2_Code = SelectedBatBowl[2];
-            int TeamBowling_Code = SelectedBatBowl[3];
-            int Team_Bowler_Code = SelectedBatBowl[4];
+            int TeamBatting_Code = SelectedBatBowl[0];            //First Batting Team Code
+            int Battman_1_Code = SelectedBatBowl[1];         //BATSMAN1 Code
+            int Battman_2_Code = SelectedBatBowl[2];         //BATSMAN2 Code
+            int TeamBowling_Code = SelectedBatBowl[3];            //First BOWLING Team Code
+            int Team_Bowler_Code = SelectedBatBowl[4];            //First BOWLER 
 
             for (int i = 1; i <= TotalBalls_Fixed; i++)
             {
@@ -174,14 +174,15 @@ namespace CricketScroreCard
                     BallBowl = BallBowl + 1;
                     if (Stricker == 1)
                     {
-                        Batsman1 = Batsman1 + 0;
+                        //Batsman1 = Batsman1 + 0;
+                        Team_First_BattingLine[Battman_1_Code] = Team_First_BattingLine[Battman_1_Code] + 0;
                     }
                     else if (Stricker == 0)
                     {
-                        Batsman2 = Batsman2 + 0;
+                        //Batsman2 = Batsman2 + 0;
+                        Team_First_BattingLine[Battman_2_Code] = Team_First_BattingLine[Battman_2_Code] + 0;
                     }
-                    Display.ShowScore(TeamBatting_Code, BallBowl, Score1);
-                    
+                    Display.ShowScore(TeamBatting_Code, BallBowl, Score1);                    
                 }
                 else if (Action_Input == 1)
                 {
@@ -191,12 +192,14 @@ namespace CricketScroreCard
 
                     if (Stricker == 1)
                     {
-                        Batsman1 = Batsman1 + 1;
+                        //Batsman1 = Batsman1 + 1;
+                        Team_First_BattingLine[Battman_1_Code] = Team_First_BattingLine[Battman_1_Code] + 1;
                         Stricker = 0;
                     }
                     else if (Stricker == 0)
                     {
-                        Batsman2 = Batsman2 + 1;
+                        //Batsman2 = Batsman2 + 1;
+                        Team_First_BattingLine[Battman_2_Code] = Team_First_BattingLine[Battman_2_Code] + 1;
                         Stricker = 1;
                     }
                     Display.ShowScore(TeamBatting_Code, BallBowl, Score1);
@@ -209,11 +212,13 @@ namespace CricketScroreCard
 
                     if (Stricker == 1)
                     {
-                        Batsman1 = Batsman1 + 2;
+                        //Batsman1 = Batsman1 + 2;
+                        Team_First_BattingLine[Battman_1_Code] = Team_First_BattingLine[Battman_1_Code] + 2;
                     }
                     else if (Stricker == 0)
                     {
-                        Batsman2 = Batsman2 + 2;
+                        //Batsman2 = Batsman2 + 2;
+                        Team_First_BattingLine[Battman_2_Code] = Team_First_BattingLine[Battman_2_Code] + 2;
                     }
                     Display.ShowScore(TeamBatting_Code, BallBowl, Score1);
                 }
@@ -228,12 +233,14 @@ namespace CricketScroreCard
 
                     if (Stricker == 1)
                     {
-                        Batsman1 = Batsman1 + 3;
+                        //Batsman1 = Batsman1 + 3;
+                        Team_First_BattingLine[Battman_1_Code] = Team_First_BattingLine[Battman_1_Code] + 3;
                         Stricker = 0;
                     }
                     else if (Stricker == 0)
                     {
-                        Batsman2 = Batsman2 + 3;
+                        //Batsman2 = Batsman2 + 3;
+                        Team_First_BattingLine[Battman_2_Code] = Team_First_BattingLine[Battman_2_Code] + 3;
                         Stricker = 1;
                     }
                     Display.ShowScore(TeamBatting_Code, BallBowl, Score1);
@@ -252,11 +259,13 @@ namespace CricketScroreCard
 
                     if (Stricker == 1)
                     {
-                        Batsman1 = Batsman1 + 4;                        
+                        //Batsman1 = Batsman1 + 4;                        
+                        Team_First_BattingLine[Battman_1_Code] = Team_First_BattingLine[Battman_1_Code] + 4;
                     }
                     else if (Stricker == 0)
                     {
-                        Batsman2 = Batsman2 + 4;                        
+                        //Batsman2 = Batsman2 + 4;                        
+                        Team_First_BattingLine[Battman_2_Code] = Team_First_BattingLine[Battman_2_Code] + 4;
                     }
                     Display.ShowScore(TeamBatting_Code, BallBowl, Score1);
                 }
@@ -271,12 +280,14 @@ namespace CricketScroreCard
 
                     if (Stricker == 1)
                     {
-                        Batsman1 = Batsman1 + 5;
+                        //Batsman1 = Batsman1 + 5;
+                        Team_First_BattingLine[Battman_1_Code] = Team_First_BattingLine[Battman_1_Code] + 5;
                         Stricker = 0;
                     }
                     else if (Stricker == 0)
                     {
-                        Batsman2 = Batsman2 + 5;
+                        //Batsman2 = Batsman2 + 5;
+                        Team_First_BattingLine[Battman_2_Code] = Team_First_BattingLine[Battman_2_Code] + 5;
                         Stricker = 1;
                     }
                     Display.ShowScore(TeamBatting_Code, BallBowl, Score1);
@@ -295,14 +306,47 @@ namespace CricketScroreCard
 
                     if (Stricker == 1)
                     {
-                        Batsman1 = Batsman1 + 6;
+                        //Batsman1 = Batsman1 + 6;
+                        Team_First_BattingLine[Battman_1_Code] = Team_First_BattingLine[Battman_1_Code] + 6;
                     }
                     else if (Stricker == 0)
                     {
-                        Batsman2 = Batsman2 + 6;
+                        //Batsman2 = Batsman2 + 6;
+                        Team_First_BattingLine[Battman_2_Code] = Team_First_BattingLine[Battman_2_Code] + 6;
                     }
                     Display.ShowScore(TeamBatting_Code, BallBowl, Score1);
                 }
+                else if (Action_Input == 7)     //Batsman Out Conditions
+                {
+                    //Adding 0 in Total Score
+                    Score1 = Score1 + 0;
+
+                    //Decrease 1 ball from total balls
+                    TotalBalls = --TotalBalls;
+                    BallBowl = BallBowl + 1;
+
+                    if (Stricker == 1)
+                    {
+                        //Batsman1 = Batsman1 + 3;
+                        Team_First_BattingLine[Battman_1_Code] = Team_First_BattingLine[Battman_1_Code] + 3;
+                        Stricker = 0;
+                    }
+                    else if (Stricker == 0)
+                    {
+                        //Batsman2 = Batsman2 + 3;
+                        Team_First_BattingLine[Battman_2_Code] = Team_First_BattingLine[Battman_2_Code] + 3;
+                        Stricker = 1;
+                    }
+                    Display.ShowScore(TeamBatting_Code, BallBowl, Score1);
+                }
+
+                else if (Action_Input == 8)
+                {
+                    //Adding 0 in Total Score
+                    Score1 = Score1 + 1;
+                    WhiteBowled = WhiteBowled + 1;
+                }
+
             }
         }
     }

@@ -36,15 +36,19 @@ namespace CricketScroreCard
 
         public static void ShowCodes()
         {
-            Console.WriteLine("[0]           ==          No Run + Ball Missed by Batsman");
-            Console.WriteLine("[1]           ==          1 RUN");
-            Console.WriteLine("[2]           ==          2 RUNS");
-            Console.WriteLine("[3]           ==          3 RUNS");
-            Console.WriteLine("[4]           ==          4 RUNS - Boundary");
-            Console.WriteLine("[5]           ==          5 RUNS");
-            Console.WriteLine("[6]           ==          6 RUNS - Out of the Park Boundary!!!");
-            Console.WriteLine("[7]           ==          OUT");
-            Console.WriteLine("[8]           ==          8 - WHITE BALL");        
+            Console.WriteLine("\n");
+            Console.WriteLine("--------------------------------------------------------");
+            Console.WriteLine("----  [0]     =    No Run + Ball Missed by Batsman  ----");
+            Console.WriteLine("----  [1]     =    1 RUN                            ----");
+            Console.WriteLine("----  [2]     =    2 RUNS                           ----");
+            Console.WriteLine("----  [3]     =    3 RUNS                           ----");
+            Console.WriteLine("----  [4]     =    4 RUNS - Boundary                ----");
+            Console.WriteLine("----  [5]     =    5 RUNS                           ----");
+            Console.WriteLine("----  [6]     =    6 RUNS - Out of the Park Boundary! --");
+            Console.WriteLine("----  [7]     =    OUT                              ----");
+            Console.WriteLine("----  [8]     =    8 - WHITE BALL                   ----");
+            Console.WriteLine("--------------------------------------------------------");
+            Console.WriteLine("\n");
         }
 
         public static void ShowScore(int TeamCode, int BallBowl , int Score)
