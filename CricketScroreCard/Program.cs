@@ -24,6 +24,7 @@ namespace CricketScroreCard
             int Batsman2 = 0;
             int Stricker = 1;
             int WhiteBowled = 0;
+            int BatsmanMaxCode = 1;
 
             int MatchOvers = 1; //T20 match total balls (6 * 20 = 120)
             int TotalBalls = MatchOvers * 6; //Total balls avaiable
@@ -328,14 +329,16 @@ namespace CricketScroreCard
                     if (Stricker == 1)
                     {
                         //Batsman1 = Batsman1 + 3;
-                        Team_First_BattingLine[Battman_1_Code] = Team_First_BattingLine[Battman_1_Code] + 3;
-                        Stricker = 0;
+                        ++BatsmanMaxCode;
+                        Battman_1_Code = BatsmanMaxCode;                        
+                        Stricker = 1;
                     }
                     else if (Stricker == 0)
                     {
                         //Batsman2 = Batsman2 + 3;
-                        Team_First_BattingLine[Battman_2_Code] = Team_First_BattingLine[Battman_2_Code] + 3;
-                        Stricker = 1;
+                        ++BatsmanMaxCode;
+                        Battman_2_Code = BatsmanMaxCode;
+                        Stricker = 0;
                     }
                     Display.ShowScore(TeamBatting_Code, BallBowl, Score1);
                 }
