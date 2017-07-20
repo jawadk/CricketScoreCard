@@ -10,19 +10,19 @@ namespace CricketScroreCard
     {
         static void Main(string[] args)
         {
-            int[] Team_First_BattingLine = new int[11];
-            int[,] Team_Second_BattingLine = new int[2, 11];
+            int[] Team_First_BattingLine = new int[11];         //Store the FIRST batting team runs
+            int[,] Team_Second_BattingLine = new int[2, 11];     //Store the SECOND batting team runs
             int[,] Team1_BowlingLine = new int[2, 11];
             int[,] Team2_BowlingLine = new int[2, 11];
 
             int[] Boundary_Batting1 = new int[2];
-            Boundary_Batting1[0] = 0;
-            Boundary_Batting1[1] = 0;
+            Boundary_Batting1[0] = 0;       //Counting FOURs
+            Boundary_Batting1[1] = 0;       //Counting SIXs
             int[] Boundary_Batting2 = new int[2];
 
             int Batsman1 = 0;
             int Batsman2 = 0;
-            int Stricker = 1;
+            int Stricker = 1;           //TO handle the Batsman Strike 
             int WhiteBowled = 0;
             int BatsmanMaxCode = 1;
             int wicketFallsTeam1 = 0;
@@ -32,8 +32,8 @@ namespace CricketScroreCard
             int MatchOvers = 3; //T20 match total balls (6 * 20 = 120)
             int TotalBalls = MatchOvers * 6; //Total balls avaiable
             int TotalBalls_Fixed = MatchOvers * 6; //Decrearing this variable to run the complete total balls (FOR LOOP)
-            int BallBowl = 0;
-            int Score1 = 0, Score2 = 0;
+            int BallBowl = 0;                       //Counting Valid Balls
+            int Score1 = 0, Score2 = 0;             //Counting Score for FirstBatting and Second Batting
 
             int Current_Bowler = 0;
                                     
@@ -62,12 +62,12 @@ namespace CricketScroreCard
             //Presentation Spash ----- END
                         
 
-            string[] tdarr = { "PAKISTAN", "SRILANKA", "AUSTRALIA", "INDIA" }; // Team Details Array
-            int[] tsarr = new int[2]; // Team Selected Array
+            string[] tdarr = { "PAKISTAN", "SRILANKA", "AUSTRALIA", "INDIA" }; // Team Details Array           
 
             string[,] AllTeamsPlayer = new string[4, 11];
 
             // Team PAKISTAN 11 Players ==== CODE == 0
+                        // 0 = TEEAM ----- 0 = TeamPlayer
             AllTeamsPlayer[0, 0] = "Sarfraz Ahmed(c)";
             AllTeamsPlayer[0, 1] = "Fakhar Zaman";
             AllTeamsPlayer[0, 2] = "Azhar Ali";
@@ -119,12 +119,14 @@ namespace CricketScroreCard
             AllTeamsPlayer[3, 9] = "Ravichandran Ashwin";
             AllTeamsPlayer[3, 10] = "Ravindra Jadeja";
 
+
+            int[] tsarr = new int[2]; // Team Selected Array --- USER INPUT
             Console.WriteLine("Please select Team1 and Team2 using their mentioned codes:");
             for (int i = 0; i < tdarr.Length; i++)
             {
-                //Console.WriteLine("Team " + (i ) + " = " + tdarr[i]);
                 Console.WriteLine("[" + i + "] = " + tdarr[i]);
             }
+
             Console.WriteLine("-----------------------------------------------------------");
             Console.Write("");
 
@@ -148,13 +150,13 @@ namespace CricketScroreCard
             int Team2_Code = tsarr[1];
 
             Display d = new Display();
-            d.ShowTeamPlayers(Team1_Code, AllTeamsPlayer, Team1_Name);
-            d.ShowTeamPlayers(Team2_Code, AllTeamsPlayer, Team2_Name);
+            d.ShowTeamPlayers(Team1_Code, AllTeamsPlayer, Team1_Name);          //This function displays the TEAM1 players
+            d.ShowTeamPlayers(Team2_Code, AllTeamsPlayer, Team2_Name);          //This function displays the TEAM2 players
 
             int Checking_Toss_Win = Toss.TossCall(Team1_Name, Team2_Name, AllTeamsPlayer[Team1_Code, 0], AllTeamsPlayer[Team2_Code, 0]);
 
-            d.ShowTeamPlayers(Team1_Code, AllTeamsPlayer, Team1_Name);
-            d.ShowTeamPlayers(Team2_Code, AllTeamsPlayer, Team2_Name);
+            d.ShowTeamPlayers(Team1_Code, AllTeamsPlayer, Team1_Name);          //This function displays the TEAM1 players
+            d.ShowTeamPlayers(Team2_Code, AllTeamsPlayer, Team2_Name);          //This function displays the TEAM2 players
 
             int[] SelectedBatBowl = MatchAction.BowlerSelectionInningStart(Checking_Toss_Win, Current_Bowler, Team1_Name, Team2_Name, Team1_Code, Team2_Code, AllTeamsPlayer);
 
