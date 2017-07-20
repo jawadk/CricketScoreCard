@@ -25,26 +25,27 @@ namespace CricketScroreCard
             int Stricker = 1;
             int WhiteBowled = 0;
             int BatsmanMaxCode = 1;
+            int wicketFallsTeam1 = 0;
+            int wicketFallsTeam2 = 0;
 
-            int MatchOvers = 1; //T20 match total balls (6 * 20 = 120)
+
+            int MatchOvers = 3; //T20 match total balls (6 * 20 = 120)
             int TotalBalls = MatchOvers * 6; //Total balls avaiable
-            int TotalBalls_Fixed = MatchOvers * 6; //Decrearing this variable to run the complete total balls for loop
+            int TotalBalls_Fixed = MatchOvers * 6; //Decrearing this variable to run the complete total balls (FOR LOOP)
             int BallBowl = 0;
             int Score1 = 0, Score2 = 0;
 
             int Current_Bowler = 0;
-            int Current_Bat1 =0, Current_Bat2 = 0;
-
-                        
+                                    
             //Presentation Spash ----- START
-            Console.WriteLine("   ÛÛÛÛÛÛÛÛÛ             ÛÛÛ           ÛÛÛÛÛ                ÛÛÛÛÛ   ");
-            Console.WriteLine(" ÛÛÛ°°°°°ÛÛÛ             °°°           °°ÛÛÛ                °°ÛÛÛ    ");
-            Console.WriteLine(" ÛÛÛ     °°°  ÛÛÛÛÛÛÛÛ  ÛÛÛÛ   ÛÛÛÛÛÛ  °ÛÛÛ ÛÛÛÛÛ  ÛÛÛÛÛÛ  ÛÛÛÛÛÛÛ  ");
-            Console.WriteLine("°ÛÛÛ         °°ÛÛÛ°°ÛÛÛ°°ÛÛÛ  ÛÛÛ°°ÛÛÛ °ÛÛÛ°°ÛÛÛ  ÛÛÛ°°ÛÛÛ°°°ÛÛÛ°   ");
-            Console.WriteLine("°ÛÛÛ          °ÛÛÛ °°°  °ÛÛÛ °ÛÛÛ °°°  °ÛÛÛÛÛÛ°  °ÛÛÛÛÛÛÛ   °ÛÛÛ    ");
-            Console.WriteLine("°°ÛÛÛ     ÛÛÛ °ÛÛÛ      °ÛÛÛ °ÛÛÛ  ÛÛÛ °ÛÛÛ°°ÛÛÛ °ÛÛÛ°°°    °ÛÛÛ ÛÛÛ");
-            Console.WriteLine("°°ÛÛÛÛÛÛÛÛÛ  ÛÛÛÛÛ     ÛÛÛÛÛ°°ÛÛÛÛÛÛ  ÛÛÛÛ ÛÛÛÛÛ°°ÛÛÛÛÛÛ   °°ÛÛÛÛÛ ");
-            Console.WriteLine("°°°°°°°°°  °°°°°     °°°°°  °°°°°°  °°°° °°°°°  °°°°°°     °°°°°  ");
+            Console.WriteLine("    ÛÛÛÛÛÛÛÛÛ             ÛÛÛ           ÛÛÛÛÛ                ÛÛÛÛÛ   ");
+            Console.WriteLine("  ÛÛÛ°°°°°ÛÛÛ             °°°           °°ÛÛÛ                °°ÛÛÛ    ");
+            Console.WriteLine(" Û ÛÛ     °°°  ÛÛÛÛÛÛÛÛ  ÛÛÛÛ   ÛÛÛÛÛÛ  °ÛÛÛ ÛÛÛÛÛ  ÛÛÛÛÛÛ  ÛÛÛÛÛÛÛ  ");
+            Console.WriteLine("° ÛÛÛ         °°ÛÛÛ°°ÛÛÛ°°ÛÛÛ  ÛÛÛ°°ÛÛÛ °ÛÛÛ°°ÛÛÛ  ÛÛÛ°°ÛÛÛ°°°ÛÛÛ°   ");
+            Console.WriteLine("° ÛÛÛ          °ÛÛÛ °°°  °ÛÛÛ °ÛÛÛ °°°  °ÛÛÛÛÛÛ°  °ÛÛÛÛÛÛÛ   °ÛÛÛ    ");
+            Console.WriteLine(" °°ÛÛÛ     ÛÛÛ °ÛÛÛ      °ÛÛÛ °ÛÛÛ  ÛÛÛ °ÛÛÛ°°ÛÛÛ °ÛÛÛ°°°    °ÛÛÛ ÛÛÛ");
+            Console.WriteLine("  °°ÛÛÛÛÛÛÛÛÛ  ÛÛÛÛÛ     ÛÛÛÛÛ°°ÛÛÛÛÛÛ  ÛÛÛÛ ÛÛÛÛÛ°°ÛÛÛÛÛÛ   °°ÛÛÛÛÛ ");
+            Console.WriteLine("    °°°°°°°°°  °°°°°     °°°°°  °°°°°°  °°°° °°°°°  °°°°°°     °°°°°  ");
 
             Console.WriteLine("\t");
 
@@ -55,7 +56,7 @@ namespace CricketScroreCard
             Console.WriteLine("     °ÛÛÛ        °ÛÛÛ  °ÛÛÛ  °ÛÛÛ °ÛÛÛÛÛÛÛ ");
             Console.WriteLine("     °ÛÛÛ      Û °ÛÛÛ  °°ÛÛÛ ÛÛÛ  °ÛÛÛ°°°  ");
             Console.WriteLine("      ÛÛÛÛÛÛÛÛÛÛÛ ÛÛÛÛÛ  °°ÛÛÛÛÛ   °°ÛÛÛÛÛÛ ");
-            Console.WriteLine("    °°°°°°°°°°° °°°°°    °°°°°     °°°°°°  ");
+            Console.WriteLine("      °°°°°°°°°°° °°°°°    °°°°°     °°°°°°  ");
             
             Console.WriteLine("\t");
             //Presentation Spash ----- END
@@ -177,13 +178,23 @@ namespace CricketScroreCard
                     {
                         //Batsman1 = Batsman1 + 0;
                         Team_First_BattingLine[Battman_1_Code] = Team_First_BattingLine[Battman_1_Code] + 0;
+                        if (BallBowl % 6 == 0)
+                        {
+                            Stricker = 0; 
+                        }
                     }
                     else if (Stricker == 0)
                     {
                         //Batsman2 = Batsman2 + 0;
                         Team_First_BattingLine[Battman_2_Code] = Team_First_BattingLine[Battman_2_Code] + 0;
+                        
+                        /*Batsman2 Transfering the strike to Batsman1 after OVER completion*/
+                        if (BallBowl % 6 == 0)
+                        {
+                            Stricker = 1;
+                        }
                     }
-                    Display.ShowScore(TeamBatting_Code, BallBowl, Score1);                    
+                    Display.ShowScore(TeamBatting_Code, BallBowl, Score1, wicketFallsTeam1);                    
                 }
                 else if (Action_Input == 1)
                 {
@@ -196,14 +207,26 @@ namespace CricketScroreCard
                         //Batsman1 = Batsman1 + 1;
                         Team_First_BattingLine[Battman_1_Code] = Team_First_BattingLine[Battman_1_Code] + 1;
                         Stricker = 0;
+                        
+                        /*Batsman1 Transfering the strike to Batsman2 after OVER completion*/
+                        if (BallBowl % 6 == 0)
+                        {
+                            Stricker = 1;
+                        }
                     }
                     else if (Stricker == 0)
                     {
                         //Batsman2 = Batsman2 + 1;
                         Team_First_BattingLine[Battman_2_Code] = Team_First_BattingLine[Battman_2_Code] + 1;
                         Stricker = 1;
+
+                        /*Batsman2 Transfering the strike to Batsman1 after OVER completion*/
+                        if (BallBowl % 6 == 0)
+                        {
+                            Stricker = 0;
+                        }
                     }
-                    Display.ShowScore(TeamBatting_Code, BallBowl, Score1);
+                    Display.ShowScore(TeamBatting_Code, BallBowl, Score1, wicketFallsTeam1);
                 }
                 else if (Action_Input == 2)
                 {
@@ -215,13 +238,25 @@ namespace CricketScroreCard
                     {
                         //Batsman1 = Batsman1 + 2;
                         Team_First_BattingLine[Battman_1_Code] = Team_First_BattingLine[Battman_1_Code] + 2;
+
+                        /*Batsman1 Transfering the strike to Batsman2 after OVER completion*/
+                        if (BallBowl % 6 == 0)
+                        {
+                            Stricker = 0;
+                        }
                     }
                     else if (Stricker == 0)
                     {
                         //Batsman2 = Batsman2 + 2;
                         Team_First_BattingLine[Battman_2_Code] = Team_First_BattingLine[Battman_2_Code] + 2;
+
+                        /*Batsman2 Transfering the strike to Batsman1 after OVER completion*/
+                        if (BallBowl % 6 == 0)
+                        {
+                            Stricker = 1;
+                        }
                     }
-                    Display.ShowScore(TeamBatting_Code, BallBowl, Score1);
+                    Display.ShowScore(TeamBatting_Code, BallBowl, Score1, wicketFallsTeam1);
                 }
                 else if (Action_Input == 3)
                 {
@@ -237,14 +272,26 @@ namespace CricketScroreCard
                         //Batsman1 = Batsman1 + 3;
                         Team_First_BattingLine[Battman_1_Code] = Team_First_BattingLine[Battman_1_Code] + 3;
                         Stricker = 0;
+                        
+                        /*Batsman1 Transfering the strike to Batsman2 after OVER completion*/
+                        if (BallBowl % 6 == 0)
+                        {
+                            Stricker = 1;
+                        }
                     }
                     else if (Stricker == 0)
                     {
                         //Batsman2 = Batsman2 + 3;
                         Team_First_BattingLine[Battman_2_Code] = Team_First_BattingLine[Battman_2_Code] + 3;
                         Stricker = 1;
+
+                        /*Batsman2 Transfering the strike to Batsman1 after OVER completion*/
+                        if (BallBowl % 6 == 0)
+                        {
+                            Stricker = 0;
+                        }
                     }
-                    Display.ShowScore(TeamBatting_Code, BallBowl, Score1);
+                    Display.ShowScore(TeamBatting_Code, BallBowl, Score1, wicketFallsTeam1);
                 }
                 else if (Action_Input == 4)
                 {
@@ -262,13 +309,24 @@ namespace CricketScroreCard
                     {
                         //Batsman1 = Batsman1 + 4;                        
                         Team_First_BattingLine[Battman_1_Code] = Team_First_BattingLine[Battman_1_Code] + 4;
+                        
+                        /*Batsman1 Transfering the strike to Batsman2 after OVER completion*/
+                        if (BallBowl % 6 == 0)
+                        {
+                            Stricker = 0;
+                        }
                     }
                     else if (Stricker == 0)
                     {
                         //Batsman2 = Batsman2 + 4;                        
                         Team_First_BattingLine[Battman_2_Code] = Team_First_BattingLine[Battman_2_Code] + 4;
+                        /*Batsman2 Transfering the strike to Batsman1 after OVER completion*/
+                        if (BallBowl % 6 == 0)
+                        {
+                            Stricker = 1;
+                        }
                     }
-                    Display.ShowScore(TeamBatting_Code, BallBowl, Score1);
+                    Display.ShowScore(TeamBatting_Code, BallBowl, Score1, wicketFallsTeam1);
                 }
                 else if (Action_Input == 5)
                 {
@@ -284,14 +342,26 @@ namespace CricketScroreCard
                         //Batsman1 = Batsman1 + 5;
                         Team_First_BattingLine[Battman_1_Code] = Team_First_BattingLine[Battman_1_Code] + 5;
                         Stricker = 0;
+                        
+                        /*Batsman1 Transfering the strike to Batsman2 after OVER completion*/
+                        if (BallBowl % 6 == 0)
+                        {
+                            Stricker = 1;
+                        }
                     }
                     else if (Stricker == 0)
                     {
                         //Batsman2 = Batsman2 + 5;
                         Team_First_BattingLine[Battman_2_Code] = Team_First_BattingLine[Battman_2_Code] + 5;
                         Stricker = 1;
+
+                        /*Batsman2 Transfering the strike to Batsman1 after OVER completion*/
+                        if (BallBowl % 6 == 0)
+                        {
+                            Stricker = 0;
+                        }
                     }
-                    Display.ShowScore(TeamBatting_Code, BallBowl, Score1);
+                    Display.ShowScore(TeamBatting_Code, BallBowl, Score1, wicketFallsTeam1);
                 }
                 else if (Action_Input == 6)
                 {
@@ -309,13 +379,25 @@ namespace CricketScroreCard
                     {
                         //Batsman1 = Batsman1 + 6;
                         Team_First_BattingLine[Battman_1_Code] = Team_First_BattingLine[Battman_1_Code] + 6;
+                        
+                        /*Batsman1 Transfering the strike to Batsman2 after OVER completion*/
+                        if (BallBowl % 6 == 0)
+                        {
+                            Stricker = 0;
+                        }
                     }
                     else if (Stricker == 0)
                     {
                         //Batsman2 = Batsman2 + 6;
                         Team_First_BattingLine[Battman_2_Code] = Team_First_BattingLine[Battman_2_Code] + 6;
+
+                        /*Batsman2 Transfering the strike to Batsman1 after OVER completion*/
+                        if (BallBowl % 6 == 0)
+                        {
+                            Stricker = 1;
+                        }
                     }
-                    Display.ShowScore(TeamBatting_Code, BallBowl, Score1);
+                    Display.ShowScore(TeamBatting_Code, BallBowl, Score1, wicketFallsTeam1);
                 }
                 else if (Action_Input == 7)     //Batsman Out Conditions
                 {
@@ -330,22 +412,36 @@ namespace CricketScroreCard
                     {
                         //Batsman1 = Batsman1 + 3;
                         ++BatsmanMaxCode;
+                        ++wicketFallsTeam1;
                         Battman_1_Code = BatsmanMaxCode;                        
                         Stricker = 1;
+
+                        /*Batsman1 Transfering the strike to Batsman2 after OVER completion*/
+                        if (BallBowl % 6 == 0)
+                        {
+                            Stricker = 0;
+                        }
                     }
                     else if (Stricker == 0)
                     {
                         //Batsman2 = Batsman2 + 3;
                         ++BatsmanMaxCode;
+                        ++wicketFallsTeam1;
                         Battman_2_Code = BatsmanMaxCode;
                         Stricker = 0;
+
+                        /*Batsman2 Transfering the strike to Batsman1 after OVER completion*/
+                        if (BallBowl % 6 == 0)
+                        {
+                            Stricker = 1;
+                        }
                     }
-                    Display.ShowScore(TeamBatting_Code, BallBowl, Score1);
+                    Display.ShowScore(TeamBatting_Code, BallBowl, Score1, wicketFallsTeam1);
                 }
 
                 else if (Action_Input == 8)
                 {
-                    //Adding 0 in Total Score
+                    //Adding 1 in Total Score (WHITE BALL)
                     Score1 = Score1 + 1;
                     WhiteBowled = WhiteBowled + 1;
                 }

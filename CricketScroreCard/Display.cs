@@ -51,7 +51,7 @@ namespace CricketScroreCard
             Console.WriteLine("\n");
         }
 
-        public static void ShowScore(int TeamCode, int BallBowl , int Score)
+        public static void ShowScore(int TeamCode, int BallBowl, int Score, int wicketFalls)
         {
             if (BallBowl %6 == 0)
             {
@@ -59,7 +59,7 @@ namespace CricketScroreCard
                 {
                     Console.WriteLine("\n");
                     Console.WriteLine("-------------------------------------");
-                    Console.WriteLine("PAKISTAN - " + Score);
+                    Console.WriteLine("PAKISTAN - " + Score + "-" + wicketFalls);
                     Console.WriteLine("-------------------------------------");
                     Console.WriteLine("\n");
                 }
@@ -67,7 +67,7 @@ namespace CricketScroreCard
                 {
                     Console.WriteLine("\n");
                     Console.WriteLine("-------------------------------------");
-                    Console.WriteLine("SRILANKA - " + Score);
+                    Console.WriteLine("SRILANKA - " + Score + "-" + wicketFalls);
                     Console.WriteLine("-------------------------------------");
                     Console.WriteLine("\n");
                 }
@@ -75,7 +75,7 @@ namespace CricketScroreCard
                 {
                     Console.WriteLine("\n");
                     Console.WriteLine("-------------------------------------");
-                    Console.WriteLine("AUSTRALIA - " + Score);
+                    Console.WriteLine("AUSTRALIA - " + Score + "-" + wicketFalls);
                     Console.WriteLine("-------------------------------------");
                     Console.WriteLine("\n");
                 }
@@ -83,7 +83,7 @@ namespace CricketScroreCard
                 {
                     Console.WriteLine("\n");
                     Console.WriteLine("-------------------------------------");
-                    Console.WriteLine("INDIA - " + Score);
+                    Console.WriteLine("INDIA - " + Score + "-" + wicketFalls);
                     Console.WriteLine("-------------------------------------");
                     Console.WriteLine("\n");
                 }
