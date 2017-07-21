@@ -161,8 +161,8 @@ namespace CricketScroreCard
             int[] SelectedBatBowl = MatchAction.BowlerSelectionInningStart(Checking_Toss_Win, Current_Bowler, Team1_Name, Team2_Name, Team1_Code, Team2_Code, AllTeamsPlayer);
 
             int TeamBatting_Code = SelectedBatBowl[0];            //First Batting Team Code
-            int Battman_1_Code = SelectedBatBowl[1];         //BATSMAN1 Code
-            int Battman_2_Code = SelectedBatBowl[2];         //BATSMAN2 Code
+            int Battman_1_Code = SelectedBatBowl[1];                //BATSMAN1 Code
+            int Battman_2_Code = SelectedBatBowl[2];                 //BATSMAN2 Code
             int TeamBowling_Code = SelectedBatBowl[3];            //First BOWLING Team Code
             int Team_Bowler_Code = SelectedBatBowl[4];            //First BOWLER 
 
