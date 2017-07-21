@@ -165,9 +165,14 @@ namespace CricketScroreCard
             int Battman_2_Code = SelectedBatBowl[2];                 //BATSMAN2 Code
             int TeamBowling_Code = SelectedBatBowl[3];            //First BOWLING Team Code
             int Team_Bowler_Code = SelectedBatBowl[4];            //First BOWLER 
+            Current_Bowler = Team_Bowler_Code;
 
             for (int i = 1; i <= TotalBalls_Fixed; i++)
             {
+                if (wicketFallsTeam1 < 9)
+                {
+                    
+                
                 Display.ShowCodes(); // This method shows the Codes for activity
                 int Action_Input = Convert.ToInt32(Console.ReadLine());
 
@@ -180,10 +185,11 @@ namespace CricketScroreCard
                     {
                         //Batsman1 = Batsman1 + 0;
                         Team_First_BattingLine[Battman_1_Code] = Team_First_BattingLine[Battman_1_Code] + 0;
+                        Team1_BowlingLine[Current_Bowler] = Team1_BowlingLine[Current_Bowler] + 1;          //Counting Bowled Balls by Bowler
                         if (BallBowl % 6 == 0)
                         {
                             Stricker = 0;
-                            Team1_BowlingLine[Current_Bowler] = Team1_BowlingLine[Current_Bowler] + 6;          //Counting Bowled Balls by Bowler
+                            
                             MatchAction.ShowBowlers(Team1_Name, TeamBowling_Code, AllTeamsPlayer); 
                             Current_Bowler = Convert.ToInt32(Console.ReadLine());                            
                         }
@@ -192,11 +198,15 @@ namespace CricketScroreCard
                     {
                         //Batsman2 = Batsman2 + 0;
                         Team_First_BattingLine[Battman_2_Code] = Team_First_BattingLine[Battman_2_Code] + 0;
+                        Team1_BowlingLine[Current_Bowler] = Team1_BowlingLine[Current_Bowler] + 1;          //Counting Bowled Balls by Bowler
                         
                         /*Batsman2 Transfering the strike to Batsman1 after OVER completion*/
                         if (BallBowl % 6 == 0)
                         {
                             Stricker = 1;
+                            //Show the Bowler list for next over selection
+                            MatchAction.ShowBowlers(Team1_Name, TeamBowling_Code, AllTeamsPlayer);
+                            Current_Bowler = Convert.ToInt32(Console.ReadLine());                            
                         }
                     }
                     Display.ShowScore(TeamBatting_Code, BallBowl, Score1, wicketFallsTeam1);                    
@@ -211,24 +221,32 @@ namespace CricketScroreCard
                     {
                         //Batsman1 = Batsman1 + 1;
                         Team_First_BattingLine[Battman_1_Code] = Team_First_BattingLine[Battman_1_Code] + 1;
+                        Team1_BowlingLine[Current_Bowler] = Team1_BowlingLine[Current_Bowler] + 1;          //Counting Bowled Balls by Bowler
                         Stricker = 0;
                         
                         /*Batsman1 Transfering the strike to Batsman2 after OVER completion*/
                         if (BallBowl % 6 == 0)
                         {
                             Stricker = 1;
+                            //Show the Bowler list for next over selection
+                            MatchAction.ShowBowlers(Team1_Name, TeamBowling_Code, AllTeamsPlayer);
+                            Current_Bowler = Convert.ToInt32(Console.ReadLine());                            
                         }
                     }
                     else if (Stricker == 0)
                     {
                         //Batsman2 = Batsman2 + 1;
                         Team_First_BattingLine[Battman_2_Code] = Team_First_BattingLine[Battman_2_Code] + 1;
+                        Team1_BowlingLine[Current_Bowler] = Team1_BowlingLine[Current_Bowler] + 1;          //Counting Bowled Balls by Bowler
                         Stricker = 1;
 
                         /*Batsman2 Transfering the strike to Batsman1 after OVER completion*/
                         if (BallBowl % 6 == 0)
                         {
                             Stricker = 0;
+                            //Show the Bowler list for next over selection
+                            MatchAction.ShowBowlers(Team1_Name, TeamBowling_Code, AllTeamsPlayer);
+                            Current_Bowler = Convert.ToInt32(Console.ReadLine());                            
                         }
                     }
                     Display.ShowScore(TeamBatting_Code, BallBowl, Score1, wicketFallsTeam1);
@@ -243,22 +261,30 @@ namespace CricketScroreCard
                     {
                         //Batsman1 = Batsman1 + 2;
                         Team_First_BattingLine[Battman_1_Code] = Team_First_BattingLine[Battman_1_Code] + 2;
+                        Team1_BowlingLine[Current_Bowler] = Team1_BowlingLine[Current_Bowler] + 1;          //Counting Bowled Balls by Bowler
 
                         /*Batsman1 Transfering the strike to Batsman2 after OVER completion*/
                         if (BallBowl % 6 == 0)
                         {
                             Stricker = 0;
+                            //Show the Bowler list for next over selection
+                            MatchAction.ShowBowlers(Team1_Name, TeamBowling_Code, AllTeamsPlayer);
+                            Current_Bowler = Convert.ToInt32(Console.ReadLine());                            
                         }
                     }
                     else if (Stricker == 0)
                     {
                         //Batsman2 = Batsman2 + 2;
                         Team_First_BattingLine[Battman_2_Code] = Team_First_BattingLine[Battman_2_Code] + 2;
+                        Team1_BowlingLine[Current_Bowler] = Team1_BowlingLine[Current_Bowler] + 1;          //Counting Bowled Balls by Bowler
 
                         /*Batsman2 Transfering the strike to Batsman1 after OVER completion*/
                         if (BallBowl % 6 == 0)
                         {
                             Stricker = 1;
+                            //Show the Bowler list for next over selection
+                            MatchAction.ShowBowlers(Team1_Name, TeamBowling_Code, AllTeamsPlayer);
+                            Current_Bowler = Convert.ToInt32(Console.ReadLine());                            
                         }
                     }
                     Display.ShowScore(TeamBatting_Code, BallBowl, Score1, wicketFallsTeam1);
@@ -276,24 +302,34 @@ namespace CricketScroreCard
                     {
                         //Batsman1 = Batsman1 + 3;
                         Team_First_BattingLine[Battman_1_Code] = Team_First_BattingLine[Battman_1_Code] + 3;
+                        Team1_BowlingLine[Current_Bowler] = Team1_BowlingLine[Current_Bowler] + 1;          //Counting Bowled Balls by Bowler
                         Stricker = 0;
                         
                         /*Batsman1 Transfering the strike to Batsman2 after OVER completion*/
                         if (BallBowl % 6 == 0)
                         {
                             Stricker = 1;
+
+                            //Show the Bowler list for next over selection
+                            MatchAction.ShowBowlers(Team1_Name, TeamBowling_Code, AllTeamsPlayer);
+                            Current_Bowler = Convert.ToInt32(Console.ReadLine());                            
                         }
                     }
                     else if (Stricker == 0)
                     {
                         //Batsman2 = Batsman2 + 3;
                         Team_First_BattingLine[Battman_2_Code] = Team_First_BattingLine[Battman_2_Code] + 3;
+                        Team1_BowlingLine[Current_Bowler] = Team1_BowlingLine[Current_Bowler] + 1;          //Counting Bowled Balls by Bowler
                         Stricker = 1;
 
                         /*Batsman2 Transfering the strike to Batsman1 after OVER completion*/
                         if (BallBowl % 6 == 0)
                         {
                             Stricker = 0;
+
+                            //Show the Bowler list for next over selection
+                            MatchAction.ShowBowlers(Team1_Name, TeamBowling_Code, AllTeamsPlayer);
+                            Current_Bowler = Convert.ToInt32(Console.ReadLine());                            
                         }
                     }
                     Display.ShowScore(TeamBatting_Code, BallBowl, Score1, wicketFallsTeam1);
@@ -314,21 +350,32 @@ namespace CricketScroreCard
                     {
                         //Batsman1 = Batsman1 + 4;                        
                         Team_First_BattingLine[Battman_1_Code] = Team_First_BattingLine[Battman_1_Code] + 4;
+                        Team1_BowlingLine[Current_Bowler] = Team1_BowlingLine[Current_Bowler] + 1;          //Counting Bowled Balls by Bowler
                         
                         /*Batsman1 Transfering the strike to Batsman2 after OVER completion*/
                         if (BallBowl % 6 == 0)
                         {
                             Stricker = 0;
+
+                            //Show the Bowler list for next over selection
+                            MatchAction.ShowBowlers(Team1_Name, TeamBowling_Code, AllTeamsPlayer);
+                            Current_Bowler = Convert.ToInt32(Console.ReadLine());                            
                         }
                     }
                     else if (Stricker == 0)
                     {
                         //Batsman2 = Batsman2 + 4;                        
                         Team_First_BattingLine[Battman_2_Code] = Team_First_BattingLine[Battman_2_Code] + 4;
+                        Team1_BowlingLine[Current_Bowler] = Team1_BowlingLine[Current_Bowler] + 1;          //Counting Bowled Balls by Bowler
+                        
                         /*Batsman2 Transfering the strike to Batsman1 after OVER completion*/
                         if (BallBowl % 6 == 0)
                         {
                             Stricker = 1;
+
+                            //Show the Bowler list for next over selection
+                            MatchAction.ShowBowlers(Team1_Name, TeamBowling_Code, AllTeamsPlayer);
+                            Current_Bowler = Convert.ToInt32(Console.ReadLine());                            
                         }
                     }
                     Display.ShowScore(TeamBatting_Code, BallBowl, Score1, wicketFallsTeam1);
@@ -346,24 +393,34 @@ namespace CricketScroreCard
                     {
                         //Batsman1 = Batsman1 + 5;
                         Team_First_BattingLine[Battman_1_Code] = Team_First_BattingLine[Battman_1_Code] + 5;
+                        Team1_BowlingLine[Current_Bowler] = Team1_BowlingLine[Current_Bowler] + 1;          //Counting Bowled Balls by Bowler
                         Stricker = 0;
                         
                         /*Batsman1 Transfering the strike to Batsman2 after OVER completion*/
                         if (BallBowl % 6 == 0)
                         {
                             Stricker = 1;
+
+                            //Show the Bowler list for next over selection
+                            MatchAction.ShowBowlers(Team1_Name, TeamBowling_Code, AllTeamsPlayer);
+                            Current_Bowler = Convert.ToInt32(Console.ReadLine());                            
                         }
                     }
                     else if (Stricker == 0)
                     {
                         //Batsman2 = Batsman2 + 5;
                         Team_First_BattingLine[Battman_2_Code] = Team_First_BattingLine[Battman_2_Code] + 5;
+                        Team1_BowlingLine[Current_Bowler] = Team1_BowlingLine[Current_Bowler] + 1;          //Counting Bowled Balls by Bowler
                         Stricker = 1;
 
                         /*Batsman2 Transfering the strike to Batsman1 after OVER completion*/
                         if (BallBowl % 6 == 0)
                         {
                             Stricker = 0;
+
+                            //Show the Bowler list for next over selection
+                            MatchAction.ShowBowlers(Team1_Name, TeamBowling_Code, AllTeamsPlayer);
+                            Current_Bowler = Convert.ToInt32(Console.ReadLine());                            
                         }
                     }
                     Display.ShowScore(TeamBatting_Code, BallBowl, Score1, wicketFallsTeam1);
@@ -384,22 +441,32 @@ namespace CricketScroreCard
                     {
                         //Batsman1 = Batsman1 + 6;
                         Team_First_BattingLine[Battman_1_Code] = Team_First_BattingLine[Battman_1_Code] + 6;
+                        Team1_BowlingLine[Current_Bowler] = Team1_BowlingLine[Current_Bowler] + 1;          //Counting Bowled Balls by Bowler
                         
                         /*Batsman1 Transfering the strike to Batsman2 after OVER completion*/
                         if (BallBowl % 6 == 0)
                         {
                             Stricker = 0;
+
+                            //Show the Bowler list for next over selection
+                            MatchAction.ShowBowlers(Team1_Name, TeamBowling_Code, AllTeamsPlayer);
+                            Current_Bowler = Convert.ToInt32(Console.ReadLine());                            
                         }
                     }
                     else if (Stricker == 0)
                     {
                         //Batsman2 = Batsman2 + 6;
                         Team_First_BattingLine[Battman_2_Code] = Team_First_BattingLine[Battman_2_Code] + 6;
+                        Team1_BowlingLine[Current_Bowler] = Team1_BowlingLine[Current_Bowler] + 1;          //Counting Bowled Balls by Bowler
 
                         /*Batsman2 Transfering the strike to Batsman1 after OVER completion*/
                         if (BallBowl % 6 == 0)
                         {
                             Stricker = 1;
+
+                            //Show the Bowler list for next over selection
+                            MatchAction.ShowBowlers(Team1_Name, TeamBowling_Code, AllTeamsPlayer);
+                            Current_Bowler = Convert.ToInt32(Console.ReadLine());                            
                         }
                     }
                     Display.ShowScore(TeamBatting_Code, BallBowl, Score1, wicketFallsTeam1);
@@ -412,6 +479,7 @@ namespace CricketScroreCard
                     //Decrease 1 ball from total balls
                     TotalBalls = --TotalBalls;
                     BallBowl = BallBowl + 1;
+                    Team1_BowlingLine[Current_Bowler] = Team1_BowlingLine[Current_Bowler] + 1;          //Counting Bowled Balls by Bowler
 
                     if (Stricker == 1)
                     {
@@ -425,6 +493,10 @@ namespace CricketScroreCard
                         if (BallBowl % 6 == 0)
                         {
                             Stricker = 0;
+
+                            //Show the Bowler list for next over selection
+                            MatchAction.ShowBowlers(Team1_Name, TeamBowling_Code, AllTeamsPlayer);
+                            Current_Bowler = Convert.ToInt32(Console.ReadLine());                            
                         }
                     }
                     else if (Stricker == 0)
@@ -433,12 +505,17 @@ namespace CricketScroreCard
                         ++BatsmanMaxCode;
                         ++wicketFallsTeam1;
                         Battman_2_Code = BatsmanMaxCode;
+                        Team1_BowlingLine[Current_Bowler] = Team1_BowlingLine[Current_Bowler] + 1;          //Counting Bowled Balls by Bowler
                         Stricker = 0;
 
                         /*Batsman2 Transfering the strike to Batsman1 after OVER completion*/
                         if (BallBowl % 6 == 0)
                         {
                             Stricker = 1;
+
+                            //Show the Bowler list for next over selection
+                            MatchAction.ShowBowlers(Team1_Name, TeamBowling_Code, AllTeamsPlayer);
+                            Current_Bowler = Convert.ToInt32(Console.ReadLine());                            
                         }
                     }
                     Display.ShowScore(TeamBatting_Code, BallBowl, Score1, wicketFallsTeam1);
@@ -452,6 +529,7 @@ namespace CricketScroreCard
                 }
 
             }
+        }
         }
     }
 }

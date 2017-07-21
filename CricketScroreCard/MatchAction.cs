@@ -110,5 +110,14 @@ namespace CricketScroreCard
  
             }
         }
+
+        public static void ShowBowlers(string Team_Name, int TeamBowling_Code, string[,] AllTeamsPlayer)
+        {
+            Console.WriteLine("Please select any bowler for " + Team_Name + " from the following: ");
+            for (int i = 5; i < 10; i++)
+            {
+                Console.WriteLine("Player Code [" + i + "] " + AllTeamsPlayer[TeamBowling_Code, i]);
+            }
+        }
     }
 }
