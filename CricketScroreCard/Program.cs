@@ -12,7 +12,7 @@ namespace CricketScroreCard
         {
             int[] Team_First_BattingLine = new int[11];         //Store the FIRST batting team runs
             int[,] Team_Second_BattingLine = new int[2, 11];     //Store the SECOND batting team runs
-            int[,] Team1_BowlingLine = new int[2, 11];
+            int[] Team1_BowlingLine = new int[11];
             int[,] Team2_BowlingLine = new int[2, 11];
 
             int[] Boundary_Batting1 = new int[2];
@@ -182,7 +182,10 @@ namespace CricketScroreCard
                         Team_First_BattingLine[Battman_1_Code] = Team_First_BattingLine[Battman_1_Code] + 0;
                         if (BallBowl % 6 == 0)
                         {
-                            Stricker = 0; 
+                            Stricker = 0;
+                            Team1_BowlingLine[Current_Bowler] = Team1_BowlingLine[Current_Bowler] + 6;          //Counting Bowled Balls by Bowler
+                            MatchAction.ShowBowlers(Team1_Name, TeamBowling_Code, AllTeamsPlayer); 
+                            Current_Bowler = Convert.ToInt32(Console.ReadLine());                            
                         }
                     }
                     else if (Stricker == 0)
