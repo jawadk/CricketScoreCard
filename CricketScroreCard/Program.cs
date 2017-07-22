@@ -138,9 +138,11 @@ namespace CricketScroreCard
             Console.WriteLine("-----------------------------------------------------------");
             Console.Write("");
 
+            tsarr[1] = 4654354;
+
             for (int i = 0; i < 2; i++)
             {
-                Console.Write("Please Enter the numner for Team Selection Team" + (i + 1) + " :");
+                Console.Write("Please Enter the number for Team Selection Team" + (i + 1) + " :");
                 tsarr[i] = Convert.ToInt32(Console.ReadLine());
 
                 do
