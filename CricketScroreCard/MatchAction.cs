@@ -119,5 +119,33 @@ namespace CricketScroreCard
                 Console.WriteLine("Player Code [" + i + "] " + AllTeamsPlayer[TeamBowling_Code, i]);
             }
         }
+
+        public static int[] BowlerSelectionInningSecond(int Current_Bowler, string Team1_Name, string Team2_Name, int Team1_Code, int Team2_Code, string[,] AllTeamsPlayer)
+        {
+            int[] Teams_Bat_Bow = new int[5];
+            
+                Teams_Bat_Bow[0] = Team1_Code; //Store the Team2 Code
+                Console.WriteLine("These Batmans will start the innings for " + Team1_Name);
+                for (int i = 0; i < 2; i++)
+                {
+                    Console.WriteLine("Player Code [" + i + "] " + AllTeamsPlayer[Team1_Code, i]);
+                    Teams_Bat_Bow[i + 1] = i;
+                }
+
+                Console.WriteLine("\n");
+                Console.WriteLine("Please select the opening bowler for " + Team2_Name + " from the following: ");
+
+                Teams_Bat_Bow[3] = Team2_Code; //Store the Team2 Code
+                for (int i = 5; i < 10; i++)
+                {
+                    Console.WriteLine("Player Code [" + i + "] " + AllTeamsPlayer[Team2_Code, i]);
+                }
+
+                Current_Bowler = Convert.ToInt32(Console.ReadLine());
+                Teams_Bat_Bow[4] = Current_Bowler;
+            return Teams_Bat_Bow;
+        }
+
+
     }
 }

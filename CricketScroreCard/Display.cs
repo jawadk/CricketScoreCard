@@ -89,5 +89,30 @@ namespace CricketScroreCard
                 }
             }
         }
+
+        public static void ShowMatchResult(int Score1, int Score2, string Team1_Name, string Team2_Name, int wicketFallsTeam1, int wicketFallsTeam2)
+        {
+
+            Console.WriteLine(Team1_Name + ": " + Score1 + "-" + wicketFallsTeam1);
+            Console.WriteLine(Team2_Name + ": " + Score2 + "-" + wicketFallsTeam2);
+
+            if (Score1 < Score2)
+            {
+                Console.WriteLine("Congratulations..... Team " + Team2_Name);
+                Console.WriteLine("You have won the match " + Team2_Name);
+            }
+
+            else if (Score1 > Score2)
+            {
+                Console.WriteLine("Congratulations..... Team " + Team1_Name);
+                Console.WriteLine("You have won the match " + Team1_Name);
+            }
+            else if (Score1 == Score2)
+            {
+                Console.WriteLine("MATCH TIED");
+            }
+
+            Console.ReadLine();
+        }
     }
 }
