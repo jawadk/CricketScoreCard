@@ -13,7 +13,7 @@ namespace CricketScroreCard
             int[] Team_First_BattingLine = new int[11];         //Store the FIRST batting team runs
             int[] Team_Second_BattingLine = new int[11];     //Store the SECOND batting team runs
             int[] Team1_BowlingLine = new int[11];
-            int[,] Team2_BowlingLine = new int[2, 11];
+            int[] Team2_BowlingLine = new int[11];
 
             int[] Boundary_Batting1 = new int[2];
             Boundary_Batting1[0] = 0;       //Counting FOURs
@@ -31,7 +31,7 @@ namespace CricketScroreCard
             int wicketFallsTeam2 = 0;
 
 
-            int MatchOvers = 2; //T20 match total balls (6 * 20 = 120)
+            int MatchOvers = 1; //T20 match total balls (6 * 20 = 120)
             int TotalBalls_FirstInnings = MatchOvers * 6; //Total balls avaiable     --- First Innings
             int TotalBalls_SecondInnings = MatchOvers * 6; //Total balls avaiable     --- Second Innings
             int TotalBalls_Fixed = MatchOvers * 6; //Decrearing this variable to run the complete total balls (FOR LOOP)
@@ -124,6 +124,7 @@ namespace CricketScroreCard
 
 
             int[] tsarr = new int[2]; // Team Selected Array --- USER INPUT
+
             Console.WriteLine("Please select Team1 and Team2 using their mentioned codes:");
             for (int i = 0; i < tdarr.Length; i++)
             {
@@ -137,6 +138,15 @@ namespace CricketScroreCard
             {
                 Console.Write("Please Enter the numner for Team Selection Team" + (i + 1) + " :");
                 tsarr[i] = Convert.ToInt32(Console.ReadLine());
+
+                do
+                {
+                    if (tsarr[i] > 3)// || tsarr[0] == tsarr[1])
+                    {
+                        Console.WriteLine("INVALID CODE: ");
+                        tsarr[i] = Convert.ToInt32(Console.ReadLine());                        
+                    }
+                } while (tsarr[i] > 3);
             }
 
             Console.WriteLine("\n");
@@ -176,6 +186,16 @@ namespace CricketScroreCard
                 {
                     Display.ShowCodes(); // This method shows the Codes for activity
                     int Action_Input = Convert.ToInt32(Console.ReadLine());
+
+                    do
+                    {
+                        if (Action_Input > 9)
+                        {
+                            Console.WriteLine("INVALID CODE!!! ");
+                            Display.ShowCodes(); // This method shows the Codes for activity
+                            Action_Input = Convert.ToInt32(Console.ReadLine());
+                        }
+                    } while (Action_Input > 8);
 
                     if (Action_Input == 0)
                     {
@@ -521,9 +541,13 @@ namespace CricketScroreCard
 
             Team1_Name = tdarr[tsarr[0]];
             Team2_Name = tdarr[tsarr[1]];
+
             BallBowl = 0;           //put = in BallBowl for second things.
 
             /*  ------------------------- SECOND INNINGS -----------------------------*/
+
+            Console.WriteLine("SECOND INNINGS");
+
             SelectedBatBowl = MatchAction.BowlerSelectionInningSecond(Current_Bowler, Team2_Name, Team1_Name, Team2_Code, Team1_Code, AllTeamsPlayer);
 
             TeamBatting_Code = SelectedBatBowl[0];            
@@ -544,6 +568,17 @@ namespace CricketScroreCard
                 {
                     Display.ShowCodes(); // This method shows the Codes for activity
                     int Action_Input = Convert.ToInt32(Console.ReadLine());
+
+                    do
+                    {
+                        if (Action_Input > 9)
+                        {
+                            Console.WriteLine("INVALID CODE!!! ");
+                            Display.ShowCodes(); // This method shows the Codes for activity
+                            Action_Input = Convert.ToInt32(Console.ReadLine());
+                        }
+                    } while (Action_Input > 8);
+
 
                     if (Action_Input == 0)
                     {
@@ -836,7 +871,7 @@ namespace CricketScroreCard
                         BallBowl = BallBowl + 1;
 
                         //Counting OUT/Wickets in Bowler array
-                        Team1_BowlingLine[Current_Bowler] = Team1_BowlingLine[Current_Bowler] + 1;
+                        Team2_BowlingLine[Current_Bowler] = Team2_BowlingLine[Current_Bowler] + 1;
 
                         if (Stricker == 1)
                         {
@@ -844,7 +879,6 @@ namespace CricketScroreCard
                             ++BatsmanMaxCode;
                             ++wicketFallsTeam2;
                             Battman_1_Code = BatsmanMaxCode;
-
                             Stricker = 1;
 
                             /*Batsman1 Transfering the strike to Batsman2 after OVER completion*/
@@ -888,9 +922,6 @@ namespace CricketScroreCard
             }
 
             Display.ShowMatchResult(Score1, Score2, Team1_Name, Team2_Name, wicketFallsTeam1, wicketFallsTeam2);
-
-            
-
         }
     }
 }

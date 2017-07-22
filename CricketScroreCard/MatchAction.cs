@@ -18,7 +18,7 @@ namespace CricketScroreCard
                 for (int i = 0; i < 2; i++)
                 {
                     Console.WriteLine("Player Code [" + i + "] " + AllTeamsPlayer[Team1_Code, i]);
-                    Teams_Bat_Bow[i+1] =i;
+                    Teams_Bat_Bow[i + 1] = i;
                 }
 
                 Console.WriteLine("\n");
@@ -31,6 +31,15 @@ namespace CricketScroreCard
                 }
 
                 Current_Bowler = Convert.ToInt32(Console.ReadLine());
+                do
+                {
+                    if (Current_Bowler > 9 || Current_Bowler < 5)// || tsarr[0] == tsarr[1])
+                    {
+                        Console.WriteLine("INVALID CODE: ");
+                        Current_Bowler = Convert.ToInt32(Console.ReadLine());
+                    }
+                } while (Current_Bowler > 9 || Current_Bowler < 5);
+
                 Teams_Bat_Bow[4] = Current_Bowler;
             }
 
@@ -42,7 +51,17 @@ namespace CricketScroreCard
                 {
                     Console.WriteLine("Player Code [" + i + "] " + AllTeamsPlayer[Team1_Code, i]);
                 }
+
                 Current_Bowler = Convert.ToInt32(Console.ReadLine());
+                do
+                {
+                    if (Current_Bowler > 9 || Current_Bowler < 5)// || tsarr[0] == tsarr[1])
+                    {
+                        Console.WriteLine("INVALID CODE: ");
+                        Current_Bowler = Convert.ToInt32(Console.ReadLine());
+                    }
+                } while (Current_Bowler > 9 || Current_Bowler < 5);
+                                
                 Teams_Bat_Bow[4] = Current_Bowler;
 
                 Console.WriteLine("\n");
@@ -74,7 +93,17 @@ namespace CricketScroreCard
                     Console.WriteLine("Player Code [" + i + "] " + AllTeamsPlayer[Team1_Code, i]);
                 }
                 Console.WriteLine("\n");
+
                 Current_Bowler = Convert.ToInt32(Console.ReadLine());
+                do
+                {
+                    if (Current_Bowler > 9 || Current_Bowler < 5)// || tsarr[0] == tsarr[1])
+                    {
+                        Console.WriteLine("INVALID CODE: ");
+                        Current_Bowler = Convert.ToInt32(Console.ReadLine());
+                    }
+                } while (Current_Bowler > 9 || Current_Bowler < 5);
+
                 Teams_Bat_Bow[4] = Current_Bowler;
             }
             else if (Checking_Toss_Win == 20)
@@ -85,7 +114,18 @@ namespace CricketScroreCard
                 {
                     Console.WriteLine("Player Code [" + i + "] " + AllTeamsPlayer[Team2_Code, i]);
                 }
+
                 Current_Bowler = Convert.ToInt32(Console.ReadLine());
+                do
+                {
+                    if (Current_Bowler > 9 || Current_Bowler < 5)// || tsarr[0] == tsarr[1])
+                    {
+                        Console.WriteLine("INVALID CODE: ");
+                        Current_Bowler = Convert.ToInt32(Console.ReadLine());
+                    }
+                } while (Current_Bowler > 9 || Current_Bowler < 5);
+
+
                 Teams_Bat_Bow[4] = Current_Bowler;
 
                 Console.WriteLine("\n");
@@ -107,7 +147,7 @@ namespace CricketScroreCard
             if (BallBowl % 6 == 0)
             {
 
- 
+
             }
         }
 
@@ -123,26 +163,26 @@ namespace CricketScroreCard
         public static int[] BowlerSelectionInningSecond(int Current_Bowler, string Team1_Name, string Team2_Name, int Team1_Code, int Team2_Code, string[,] AllTeamsPlayer)
         {
             int[] Teams_Bat_Bow = new int[5];
-            
-                Teams_Bat_Bow[0] = Team1_Code; //Store the Team2 Code
-                Console.WriteLine("These Batmans will start the innings for " + Team1_Name);
-                for (int i = 0; i < 2; i++)
-                {
-                    Console.WriteLine("Player Code [" + i + "] " + AllTeamsPlayer[Team1_Code, i]);
-                    Teams_Bat_Bow[i + 1] = i;
-                }
 
-                Console.WriteLine("\n");
-                Console.WriteLine("Please select the opening bowler for " + Team2_Name + " from the following: ");
+            Teams_Bat_Bow[0] = Team1_Code; //Store the Team2 Code
+            Console.WriteLine("These Batmans will start the innings for " + Team1_Name);
+            for (int i = 0; i < 2; i++)
+            {
+                Console.WriteLine("Player Code [" + i + "] " + AllTeamsPlayer[Team1_Code, i]);
+                Teams_Bat_Bow[i + 1] = i;
+            }
 
-                Teams_Bat_Bow[3] = Team2_Code; //Store the Team2 Code
-                for (int i = 5; i < 10; i++)
-                {
-                    Console.WriteLine("Player Code [" + i + "] " + AllTeamsPlayer[Team2_Code, i]);
-                }
+            Console.WriteLine("\n");
+            Console.WriteLine("Please select the opening bowler for " + Team2_Name + " from the following: ");
 
-                Current_Bowler = Convert.ToInt32(Console.ReadLine());
-                Teams_Bat_Bow[4] = Current_Bowler;
+            Teams_Bat_Bow[3] = Team2_Code; //Store the Team2 Code
+            for (int i = 5; i < 10; i++)
+            {
+                Console.WriteLine("Player Code [" + i + "] " + AllTeamsPlayer[Team2_Code, i]);
+            }
+
+            Current_Bowler = Convert.ToInt32(Console.ReadLine());
+            Teams_Bat_Bow[4] = Current_Bowler;
             return Teams_Bat_Bow;
         }
 

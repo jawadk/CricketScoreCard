@@ -31,8 +31,18 @@ namespace CricketScroreCard
                 Console.WriteLine("[0] = BATTING");
                 Console.WriteLine("[1] = FIELDING/BOWLNG");
 
-                int Selection = Convert.ToInt32(Console.ReadLine());
+                
+                int Selection;
+                do
+                {
+                    Selection = Convert.ToInt32(Console.ReadLine());
+                    if (Selection > 1)
+                    {
+                        Console.WriteLine("Invalid Code, Please enter [0] = BATTING or [1] = FIELDING/BOWLNG");
+                    }
 
+                } while (Selection > 1);
+                
                 if (Selection == 0)
                 {
                     Console.WriteLine("Great....!!!! " + Team1_Captain + "you have choosed BATTING...");
@@ -53,7 +63,16 @@ namespace CricketScroreCard
                 Console.WriteLine("[0] = BATTING");
                 Console.WriteLine("[1] = FIELDING/BOWLNG");
 
-                int Selection = Convert.ToInt32(Console.ReadLine());
+                int Selection;
+                do
+                {
+                    Selection = Convert.ToInt32(Console.ReadLine());
+                    if (Selection > 1)
+                    {
+                        Console.WriteLine("Invalid Code, Please enter [0] = BATTING or [1] = FIELDING/BOWLNG");
+                    }
+
+                } while (Selection > 1);
                 
                 if (Selection == 0)
                 {
@@ -102,12 +121,12 @@ namespace CricketScroreCard
             do
             {               
                 TossValue = Convert.ToInt32(Console.ReadLine());
-                if (TossValue > 2)
+                if (TossValue > 1)
                 {
                     Console.WriteLine("Invalid Code, Please enter [0] = TRAILS or [1] = HEADS");
                 }
    
-            } while (TossValue > 2);
+            } while (TossValue > 1);
 
             int Toss_Win_Result = Toss.TossDesider(TossValue, Team1_Name, Team2_Name, Team1_Captain, Team2_Captain);
             return Toss_Win_Result;
