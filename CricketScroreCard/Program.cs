@@ -18,7 +18,11 @@ namespace CricketScroreCard
             int[] Boundary_Batting1 = new int[2];
             Boundary_Batting1[0] = 0;       //Counting FOURs
             Boundary_Batting1[1] = 0;       //Counting SIXs
+
             int[] Boundary_Batting2 = new int[2];
+            Boundary_Batting2[0] = 0;       //Counting FOURs
+            Boundary_Batting2[1] = 0;       //Counting SIXs
+
 
             int Batsman1 = 0;
             int Batsman2 = 0;
@@ -536,8 +540,14 @@ namespace CricketScroreCard
                         Score1 = Score1 + 1;
                         WhiteBowled_Team1 = WhiteBowled_Team1 + 1;
                     }
+
+                    //Display.ShowScoreCard(Team_First_BattingLine, Team1_BowlingLine, Score1, Boundary_Batting1);
+                    
                 }
+                
             }
+            
+            Display.ShowScoreCard(Team_First_BattingLine, Team1_BowlingLine, Score1, Boundary_Batting1, AllTeamsPlayer, TeamBatting_Code, TeamBowling_Code);
 
             Team1_Name = tdarr[tsarr[0]];
             Team2_Name = tdarr[tsarr[1]];
@@ -736,7 +746,7 @@ namespace CricketScroreCard
                         Score2 = Score2 + 4;
 
                         //Counting Boundary - 4
-                        Boundary_Batting1[0] = Boundary_Batting1[0] + 1;
+                        Boundary_Batting2[0] = Boundary_Batting2[0] + 1;
 
                         //Decrease 1 ball from total balls
                         TotalBalls_SecondInnings = --TotalBalls_SecondInnings;
@@ -823,7 +833,7 @@ namespace CricketScroreCard
                         Score2 = Score2 + 6;
 
                         //Counting Boundary - 6 Runs
-                        Boundary_Batting1[1] = Boundary_Batting1[1] + 1;
+                        Boundary_Batting2[1] = Boundary_Batting2[1] + 1;
 
                         //Decrease 1 ball from total balls
                         TotalBalls_SecondInnings = --TotalBalls_SecondInnings;
@@ -919,7 +929,10 @@ namespace CricketScroreCard
                         WhiteBowled_Team2 = WhiteBowled_Team2 + 1;
                     }
                 }
+                                    //int[] BatsmansCode, int[] BowlerCode, int Score1,   int[] Boundary_Batting, string[,] AllTimePlayers, int TeamBattingCode, int TeamBowlingCode
+                
             }
+            Display.ShowScoreCard(Team_Second_BattingLine, Team2_BowlingLine, Score2, Boundary_Batting2, AllTeamsPlayer, TeamBatting_Code, TeamBowling_Code);
 
             Display.ShowMatchResult(Score1, Score2, Team1_Name, Team2_Name, wicketFallsTeam1, wicketFallsTeam2);
         }

@@ -114,5 +114,32 @@ namespace CricketScroreCard
 
             Console.ReadLine();
         }
+
+        public static void ShowScoreCard(int[] BatsmansCode, int[] BowlerCode, int Score1, int[] Boundary_Batting, string[,] AllTimePlayers, int TeamBattingCode, int TeamBowlingCode)
+        {
+            Console.WriteLine("--------------------------------------");
+            Console.WriteLine("Innings BOUNDARIES  ");
+            Console.WriteLine("4(s) BOUNDARIES         " + Boundary_Batting[0]);
+            Console.WriteLine("6(s) BOUNDARIES         " + Boundary_Batting[1]);
+
+            Console.WriteLine("\n");
+            Console.WriteLine("--------------------------------------");
+
+            Console.WriteLine("---BatsmanCode              Players          RUNS");
+            for (int i = 0; i < 10; i++)
+            {
+                Console.WriteLine("---[" + i + "]     " + AllTimePlayers[TeamBattingCode, i] + "         " + BatsmansCode[i]);
+            }
+
+            Console.WriteLine("\n");
+
+            Console.WriteLine("--------------------------------------");
+                Console.WriteLine("---BowlersCode              Bowlers                 " + "WICKETS");
+            for (int i = 5; i < 9; i++)
+            {
+                Console.WriteLine("---BpwlerCode [" + i + "]  +     " + AllTimePlayers[TeamBowlingCode, i] + "      " + BowlerCode[i]);
+            }
+ 
+        }
     }
 }
