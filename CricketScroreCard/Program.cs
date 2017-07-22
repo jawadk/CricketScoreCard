@@ -141,7 +141,7 @@ namespace CricketScroreCard
 
                 do
                 {
-                    if (tsarr[i] > 3)// || tsarr[0] == tsarr[1])
+                    if (tsarr[i] > 3 || tsarr[0] == tsarr[1])
                     {
                         Console.WriteLine("INVALID CODE: ");
                         tsarr[i] = Convert.ToInt32(Console.ReadLine());                        
